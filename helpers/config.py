@@ -17,3 +17,6 @@ def get_config_object() -> dict:
   OBJECT = load(open('./config.json'))
   return OBJECT
 
+
+# configuration
+CONFIG = get_config_object()

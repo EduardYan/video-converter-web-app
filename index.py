@@ -6,11 +6,7 @@ Principal file for execute the server.
 
 
 from app import app
-from helpers.config import get_config_object
-
-
-# getting the configuration
-CONFIG = get_config_object()
+from helpers.config import CONFIG
 
 
 if __name__ == '__main__':
