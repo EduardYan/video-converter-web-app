@@ -1,4 +1,4 @@
 {
   "PORT": 3000,
-  "UPLOAD_FOLDER": "./files/videos/"
+  "UPLOAD_FOLDER": "./static/files/videos/"
 }
