@@ -1,15 +1,22 @@
 <!-- PAGE FOR DOWNLOAD THE FILE CONVERTED -->
 {% extends 'layout.html' %} {% block content %}
+<!-- DOWNLOAD STYLES -->
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/download.css') }}">
+
 <div class="card">
   <div class="card-header">
     <h2 class="text-center">Video Converted Successfully.</h2>
     <p class="text-center">{{ audio_file.name }}</p>
   </div>
   <div class="card-body">
-    <a class="btn btn-success" href="{{ audio_file.path }}" download="{{ audio_file.path }}">Download</a>
+    <div class="mx-auto text-center w-100">
+      <a class="btn btn-success download-buttons" href="{{ audio_file.path }}" download="{{ audio_file.path }}">Download</a>
+    </div>
   </div>
   <div class="card-footer">
-    <a class="btn btn-success" href="{{ url_for('converter.initial') }}">Convert More</a>
+    <div class="mx-auto text-center w-100">
+      <a class="btn btn-success download-buttons" href="{{ url_for('converter.initial') }}">Convert More</a>
+    </div>
   </div>
 </div>
 {% endblock %}

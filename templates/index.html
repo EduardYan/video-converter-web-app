@@ -1,32 +1,31 @@
 <!-- PRINCIPAL PAGE -->
-{% extends 'layout.html' %}
+{% extends 'layout.html' %} {% block content %} {% include 'partials/_messagesGood.html' %} {% include 'partials/_loadForm.html' %}
 
-{% block content %}
-
-{% include 'partials/_messagesGood.html' %}
-
-{% include 'partials/_loadForm.html' %}
-
-<h2 class="text-white display-4">Videos to convert.</h2>
+<h2 class="text-white display-4">Videos to convert</h2>
+<p class="text-white" id="info-videos-view">
+  Find here the videos to convert
+</p>
 
 <!-- VIDEOS VIEW -->
 <section class="videos-view my-5">
-  {% if videos_list != [] %}
-    {% for video in videos_list %}
-    <form class="video card bg-info" action="{{ url_for('converter.convert') }}" method="POST">
-      <div class="card-header">
-        <span class="h2">{{ video.filename }}</span>
-        <input class="d-none" type="text" value="{{ video.filename }}" name="video-name">
-      </div>
-      <div class="card-body">
-        <button class="btn btn-primary w-100 mb-3">Convert</button>
-        <a class="btn btn-danger w-100" href="{{ url_for('converter.delete', video_name = video.filename) }}">Delete</a>
-      </div>
-    </form>
-    {% endfor %}
-  {% else %}
-  <h2 class="text-white lead">Not Videos Yet.</h2>
+  {% if videos_list != [] %} {% for video in videos_list %}
+  <form class="video card" action="{{ url_for('converter.convert') }}" method="POST">
+    <div class="card-header">
+      <span class="h2">{{ video.filename }}</span>
+      <input class="d-none" type="text" value="{{ video.filename }}" name="video-name">
+    </div>
+    <div class="card-body">
+      <button class="btn btn-primary w-100 mb-3">Convert</button>
+      <a class="btn btn-danger w-100 delete-button" href="{{ url_for('converter.delete', video_name = video.filename) }}">
+        Delete
+      </a>
+    </div>
+  </form>
+  {% endfor %} {% else %}
+  <h2 class="lead text-white">Not Videos Yet</h2>
   {% endif %}
 </section>
+
+<script src="{{ url_for('static', filename = 'js/app.js') }}" type="module"></script>
 
 {% endblock %}

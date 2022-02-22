@@ -1,0 +1,14 @@
+/*
+  Styles for the page
+  of download.
+*/
+
+.download-buttons {
+  width: 50%;
+}
+
+@media (max-width: 500px) {
+  .download-buttons {
+    width: 100%;
+  }
+}

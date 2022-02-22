@@ -4,5 +4,108 @@
 */
 
 body {
-  background-color: #444;
+  background-color: #114411;
+}
+
+
+/* Wrapper or container */
+
+#wrapper {
+  margin: 3rem auto 9rem auto;
+}
+
+
+/* Navigation */
+
+.navbar {
+  background-color: #225522;
+}
+
+
+/* Cards */
+
+.card {
+  background-color: #aaaacc;
+}
+
+
+/* Button to send the file */
+
+#send-button {
+  width: 30%;
+}
+
+
+/* For the info and the view of videos */
+
+#info-videos-view:hover {
+  border-bottom: 1px solid #fff;
+}
+
+
+/* View for the videos */
+
+.videos-view {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 3rem;
+  row-gap: 2rem;
+}
+
+.video {
+  background-color: #8888cc;
+  transition: box-shadow .4s ease;
+}
+
+.video:hover {
+  box-shadow: .5rem .9rem rgba(0, 0, 0, .4);
+}
+
+
+/* Footer */
+
+#main-footer {
+  background-color: #224422;
+}
+
+
+/* Links from footer */
+
+#footer-links a {
+  width: 30%;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .videos-view {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #footer-links a {
+    width: 60%;
+  }
+}
+
+@media (max-width: 700px) {
+  .videos-view {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+  }
+  #footer-links a {
+    width: 70%;
+  }
+}
+
+@media (max-width: 500px) {
+  #send-button {
+    width: 100%;
+  }
+  .videos-view {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+  #footer-links a {
+    width: 90%;
+  }
 }

@@ -1,5 +1,8 @@
 # virtual enviroment
 env
 
+# vscode config
+.vscode
+
 # cache from python
 __pycache__
