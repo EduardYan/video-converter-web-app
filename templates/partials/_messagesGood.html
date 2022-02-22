@@ -2,13 +2,19 @@
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 {% for message in messages %}
-{% if message == 'Some problem with Upload the File. Verify the file, please' %}
-<div class="alert alert-danger">
-  <p><strong>{{ message }}</strong></p>
+{% if message == 'Some problem with Upload the File. Verify the file, please.' %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <p>
+    <strong>{{ message }}</strong>
+  </p>
+  <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {% else %}
-<div class="alert alert-success">
-  <p><strong>{{ message }}</strong></p>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <p>
+    <strong>{{ message }}</strong>
+  </p>
+  <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {% endif %}
 {% endfor %}
