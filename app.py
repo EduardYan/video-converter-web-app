@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 # settings
 app.secret_key = 'mysecretkey'
-app.config['UPLOAD_FOLDER'] = CONFIG['UPLOAD_FOLDER']
+app.config['UPLOAD_FOLDER'] = CONFIG['UPLOAD_FOLDER_VIDEOS']
 
 # using the routes
 app.register_blueprint(converter)

@@ -1,5 +1,11 @@
 <!-- PRINCIPAL PAGE -->
-{% extends 'layout.html' %} {% block content %} {% include 'partials/_messagesGood.html' %} {% include 'partials/_loadForm.html' %}
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% include 'partials/_messages.html' %}
+
+{% include 'partials/_loadForm.html' %}
 
 <h2 class="text-white display-4">Videos to convert</h2>
 <p class="text-white" id="info-videos-view">
@@ -8,7 +14,8 @@
 
 <!-- VIDEOS VIEW -->
 <section class="videos-view my-5">
-  {% if videos_list != [] %} {% for video in videos_list %}
+  {% if videos_list != [] %}
+  {% for video in videos_list %}
   <form class="video card" action="{{ url_for('converter.convert') }}" method="POST">
     <div class="card-header">
       <span class="h2">{{ video.filename }}</span>
@@ -21,7 +28,8 @@
       </a>
     </div>
   </form>
-  {% endfor %} {% else %}
+  {% endfor %}
+  {% else %}
   <h2 class="lead text-white">Not Videos Yet</h2>
   {% endif %}
 </section>

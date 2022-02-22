@@ -20,7 +20,7 @@ from helpers.utils import get_videos_files, convert_to_audio, delete_file, save_
 converter = Blueprint('converter', __name__)
 
 # to upload the files
-upload_folder = CONFIG['UPLOAD_FOLDER']
+upload_folder = CONFIG['UPLOAD_FOLDER_VIDEOS']
 
 
 @converter.route('/')
@@ -39,6 +39,7 @@ def initial():
 
 @converter.route('/uploader', methods = ['POST'])
 def uploader():
+  # first validatin the method only POST is available
   if request.method == 'POST':
     
     try:
@@ -73,7 +74,7 @@ def convert():
     return render_template('download.html', audio_file = new_audio)
 
   except:
-    flash('Some Problem to convert the file to audio.')
+    flash('Some problem to convert the file to audio.')
     return redirect(url_for('converter.initial'))
 
 

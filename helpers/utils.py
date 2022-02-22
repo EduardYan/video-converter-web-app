@@ -13,7 +13,8 @@ from models.video import Video
 
 
 # here for save new audios
-ROUTE_FOR_AUDIOS = './static/files/audios/'
+ROUTE_FOR_AUDIOS = CONFIG['AUDIOS_FOLDER']
+ROUTE_FOR_VIDEOS = CONFIG['UPLOAD_FOLDER_VIDEOS']
 
 
 def get_videos_files() -> list:
@@ -23,7 +24,7 @@ def get_videos_files() -> list:
   for convert.
   """
 
-  videos_list = os.listdir(CONFIG['UPLOAD_FOLDER'])
+  videos_list = os.listdir(ROUTE_FOR_VIDEOS)
   new_videos_list = [] # to save the objects
 
   for filename in videos_list:
@@ -65,7 +66,7 @@ def save_file(file) -> None:
   # saving the file
   filename = secure_filename(file.filename)
   video = Video(filename)
-  file.save(os.path.join(CONFIG['UPLOAD_FOLDER'], video.filename))
+  file.save(os.path.join(ROUTE_FOR_VIDEOS, video.filename))
 
 
 def convert_to_audio(upload_folder:str, video_name:str) -> Audio:

@@ -2,7 +2,10 @@
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 {% for message in messages %}
-{% if message == 'Some problem with Upload the File. Verify the file, please.' %}
+{% if message == 'Some problem with Upload the File. Verify the file, please.'
+ or message == 'Some problem with upload the file. Verify the file, please.' 
+ or message == 'Some problem to convert the file to audio.' 
+ or message == 'Some problem to delete the file.' %}
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
   <p>
     <strong>{{ message }}</strong>
