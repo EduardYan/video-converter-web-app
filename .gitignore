@@ -2,7 +2,7 @@
 env
 
 # vscode config
-.vscode
+/.vscode
 
 # cache from python
 __pycache__
