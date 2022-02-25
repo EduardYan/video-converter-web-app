@@ -65,8 +65,17 @@ def save_file(file) -> None:
 
   # saving the file
   filename = secure_filename(file.filename)
+
+  # validating the filename
+  if filename.split('.')[1] != 'mp4':
+    return False
+
+
+  # in case is valid the video file
   video = Video(filename)
   file.save(os.path.join(ROUTE_FOR_VIDEOS, video.filename))
+
+  return True
 
 
 def convert_to_audio(upload_folder:str, video_name:str) -> Audio:

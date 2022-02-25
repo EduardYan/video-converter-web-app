@@ -45,10 +45,13 @@ def uploader():
     try:
       # getting the video file and saving
       file = request.files['video-file']
-      save_file(file)
 
-      # showing message in case the file is save sucessfulyy
-      flash('File Upload Succesfully.')
+      if save_file(file):
+        # showing message in case the file is save sucessfulyy
+        flash('File Upload Succesfully.')
+
+      else:
+        flash('The file to upload not is a video. Try Again.')
 
     except:
       flash('Some problem with upload the file. Verify the file, please.')

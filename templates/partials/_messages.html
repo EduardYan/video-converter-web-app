@@ -5,7 +5,8 @@
 {% if message == 'Some problem with Upload the File. Verify the file, please.'
  or message == 'Some problem with upload the file. Verify the file, please.' 
  or message == 'Some problem to convert the file to audio.' 
- or message == 'Some problem to delete the file.' %}
+ or message == 'Some problem to delete the file.' 
+ or message == 'The file to upload not is a video. Try Again.' %}
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
   <p>
     <strong>{{ message }}</strong>
