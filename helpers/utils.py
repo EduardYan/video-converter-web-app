@@ -4,6 +4,8 @@ in the server.
 """
 
 import os
+
+from pkg_resources import WorkingSet
 from helpers.config import CONFIG
 from models.video import Video
 from models.audio import Audio
@@ -16,6 +18,27 @@ from models.video import Video
 ROUTE_FOR_AUDIOS = CONFIG['AUDIOS_FOLDER']
 ROUTE_FOR_VIDEOS = CONFIG['UPLOAD_FOLDER_VIDEOS']
 
+def create_directories_to_save():
+  """
+  Create the directory for save
+  the videos and for save the new audios.
+
+  Ignore if the directories exists.
+
+  """
+
+  try:
+    # getting the working directory
+    WORKING_DIRECTORY = os.getcwd()
+
+    # creating the two directories of the configuration file
+    os.makedirs(WORKING_DIRECTORY + '/static/files', exist_ok = True)
+    os.makedirs(WORKING_DIRECTORY + ROUTE_FOR_VIDEOS, exist_ok = True)
+    os.makedirs(WORKING_DIRECTORY + ROUTE_FOR_AUDIOS, exist_ok = True)
+
+  except:
+    print('Some problem to create the directories, verify the path.')
+
 
 def get_videos_files() -> list:
   """
@@ -24,19 +47,24 @@ def get_videos_files() -> list:
   for convert.
   """
 
-  videos_list = os.listdir(ROUTE_FOR_VIDEOS)
-  new_videos_list = [] # to save the objects
+  try:
+    videos_list = os.listdir(ROUTE_FOR_VIDEOS)
+    new_videos_list = [] # to save the objects
 
-  for filename in videos_list:
-    last_extension = filename.split('.')[1]
-    # only return mp4 files
-    if last_extension == 'mp4':
-      video = Video(filename)
-      new_videos_list.append(video)
+    for filename in videos_list:
+      last_extension = filename.split('.')[1]
+      # only return mp4 files
+      if last_extension == 'mp4':
+        video = Video(filename)
+        new_videos_list.append(video)
 
-  del videos_list # not use
+    del videos_list # not use
 
-  return new_videos_list
+    return new_videos_list
+
+  except FileNotFoundError:
+    # in case the directories is not created
+    create_directories_to_save()
 
 
 def get_file_without_extension(path_file) -> str:

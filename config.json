@@ -1,5 +1,5 @@
 {
   "PORT": 3000,
-  "UPLOAD_FOLDER_VIDEOS": "./static/files/videos/",
-  "AUDIOS_FOLDER": "./static/files/audios/"
+  "UPLOAD_FOLDER_VIDEOS": "/static/files/videos/",
+  "AUDIOS_FOLDER": "/static/files/audios/"
 }

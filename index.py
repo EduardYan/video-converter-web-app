@@ -11,4 +11,8 @@ from helpers.config import CONFIG
 
 if __name__ == '__main__':
   # running with configuration
-  app.run(port = CONFIG['PORT'], host = '0.0.0.0', debug = True)
+  app.run(
+    port = CONFIG['PORT'],
+    host = '0.0.0.0',
+    debug = True
+    )

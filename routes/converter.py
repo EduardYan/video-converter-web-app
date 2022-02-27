@@ -33,8 +33,12 @@ def initial():
   # getting the videos list to show
   videos_list = get_videos_files()
 
-  # returning the page with the video list to show
-  return render_template('index.html', videos_list = videos_list)
+  # validating if there are videos
+  if videos_list != None:
+    # returning the page with the video list to show
+    return render_template('index.html', videos_list = videos_list)
+  else:
+    return render_template('index.html')
 
 
 @converter.route('/uploader', methods = ['POST'])

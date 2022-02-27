@@ -2,6 +2,14 @@
 
 __This is a web application for convert videos to audio. Made with python3 using flask module and bootstrap framework for the css.__
 
+## Installation.
+
+```bash
+$ git clone https://github.com/EduardYan/video-converter-web-app
+$ cd video-converter-web-app
+
+```
+
 
 ## Dependencies.
 
@@ -14,7 +22,7 @@ $ pip3 install -r requirements.txt
 ## Run.
 
 ```bash
-python3 index.py
+$ python3 index.py
 ```
 
 ## Configuration File.
