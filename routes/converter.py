@@ -46,21 +46,30 @@ def uploader():
   # first validatin the method only POST is available
   if request.method == 'POST':
     
-    try:
-      # getting the video file and saving
-      file = request.files['video-file']
+    # try:
+    #   # getting the video file and saving
+    #   file = request.files['video-file']
 
-      if save_file(file):
-        # showing message in case the file is save sucessfulyy
-        flash('File Upload Succesfully.')
+    #   if save_file(file):
+    #     # showing message in case the file is save sucessfulyy
+    #     flash('File Upload Succesfully.')
 
-      else:
-        flash('The file to upload not is a video. Try Again.')
+    #   else:
+    #     flash('The file to upload not is a video. Try Again.')
 
-    except:
-      flash('Some problem with upload the file. Verify the file, please.')
+    # except:
+    #   flash('Some problem with upload the file. Verify the file, please.')
 
-    return redirect(url_for('converter.initial'))
+    file = request.files['video-file']
+
+  if save_file(file):
+    # showing message in case the file is save sucessfulyy
+    flash('File Upload Succesfully.')
+
+  else:
+    flash('The file to upload not is a video. Try Again.')
+
+  return redirect(url_for('converter.initial'))
 
 
 @converter.route('/convert', methods = ['POST'])

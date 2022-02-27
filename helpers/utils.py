@@ -15,8 +15,12 @@ from models.video import Video
 
 
 # here for save new audios
-ROUTE_FOR_AUDIOS = CONFIG['AUDIOS_FOLDER']
-ROUTE_FOR_VIDEOS = CONFIG['UPLOAD_FOLDER_VIDEOS']
+# getting the working directory
+WORKING_DIRECTORY = os.getcwd()
+ROUTE_FOR_AUDIOS =  WORKING_DIRECTORY + CONFIG['AUDIOS_FOLDER']
+RELATIVE_ROUTE_FOR_AUDIOS = '/static/files/audios/'
+ROUTE_FOR_VIDEOS = WORKING_DIRECTORY + CONFIG['UPLOAD_FOLDER_VIDEOS']
+
 
 def create_directories_to_save():
   """
@@ -28,13 +32,11 @@ def create_directories_to_save():
   """
 
   try:
-    # getting the working directory
-    WORKING_DIRECTORY = os.getcwd()
 
     # creating the two directories of the configuration file
     os.makedirs(WORKING_DIRECTORY + '/static/files', exist_ok = True)
-    os.makedirs(WORKING_DIRECTORY + ROUTE_FOR_VIDEOS, exist_ok = True)
-    os.makedirs(WORKING_DIRECTORY + ROUTE_FOR_AUDIOS, exist_ok = True)
+    os.makedirs(ROUTE_FOR_VIDEOS, exist_ok = True)
+    os.makedirs(ROUTE_FOR_AUDIOS, exist_ok = True)
 
   except:
     print('Some problem to create the directories, verify the path.')
@@ -101,7 +103,9 @@ def save_file(file) -> None:
 
   # in case is valid the video file
   video = Video(filename)
-  file.save(os.path.join(ROUTE_FOR_VIDEOS, video.filename))
+  file.save(
+    os.path.join(ROUTE_FOR_VIDEOS, video.filename
+    ))
 
   return True
 
@@ -119,13 +123,14 @@ def convert_to_audio(upload_folder:str, video_name:str) -> Audio:
   video_without_extension = get_file_without_extension(video_name)
 
   video_mp4 = VideoFileClip(
-    upload_folder + video_name
+    WORKING_DIRECTORY + upload_folder + video_name
   )
   # getting only the audio
   audio_mp3 = video_mp4.audio
   audio = Audio(
     name = video_without_extension + '.mp3',
-    path = ROUTE_FOR_AUDIOS + video_without_extension + '.mp3'
+    path = ROUTE_FOR_AUDIOS + video_without_extension + '.mp3',
+    relative_path = RELATIVE_ROUTE_FOR_AUDIOS + video_without_extension + '.mp3'
   )
 
   # concact to save
@@ -144,7 +149,9 @@ def delete_file(upload_folder:str, video_name:str) -> None:
   """
 
   # deleting the video file and the audio
-  os.remove(upload_folder + video_name)
+  os.remove(
+    WORKING_DIRECTORY + upload_folder + video_name
+    )
 
   # getting the audio name to delete
   audio_name = get_file_without_extension(video_name)

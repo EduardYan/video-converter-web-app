@@ -34,8 +34,8 @@ __The file 'config.json' is a configuration file, for the server. You can set th
 ```json
 {
   "PORT": 3000,
-  "UPLOAD_FOLDER_VIDEOS": "./static/files/videos/",
-  "AUDIOS_FOLDER": "./static/files/audios/"
+  "UPLOAD_FOLDER_VIDEOS": "/static/files/videos/",
+  "AUDIOS_FOLDER": "/static/files/audios/"
 }
 ```
 
